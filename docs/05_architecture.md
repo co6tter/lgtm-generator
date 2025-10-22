@@ -59,18 +59,18 @@
 ### 1.2 Technology Stack
 
 **Frontend:**
-- **Framework**: Next.js 14+ (App Router)
+- **Framework**: Next.js 15.5.6 (App Router)
 - **Language**: TypeScript 5+
-- **UI Library**: React 18+
-- **Styling**: Tailwind CSS 3+
-- **State Management**: Zustand
+- **UI Library**: React 19.1.0
+- **Styling**: Tailwind CSS 4+ (PostCSS)
+- **State Management**: Zustand (to be added)
 - **Image Generation**: Canvas API
-- **Icons**: Heroicons or Lucide React
+- **Icons**: Heroicons or Lucide React (to be added)
 
 **Backend (Phase 2):**
 - **Runtime**: Next.js API Routes (Edge/Node.js)
 - **Database**: Vercel KV (Redis-compatible)
-- **Image Generation**: @vercel/og
+- **Image Generation**: @vercel/og (to be added)
 
 **Deployment:**
 - **Platform**: Vercel
@@ -79,10 +79,10 @@
 
 **Development Tools:**
 - **Package Manager**: pnpm
-- **Linter**: ESLint
-- **Formatter**: Prettier
+- **Linter**: ESLint 9
+- **Formatter**: Prettier (to be added)
 - **Type Checking**: TypeScript
-- **Testing**: Vitest + React Testing Library (optional)
+- **Testing**: Vitest + React Testing Library (optional, to be added)
 
 ## 2. Frontend Architecture
 
@@ -90,85 +90,91 @@
 
 ```
 lgtm-generator/
-├── app/                          # Next.js App Router
-│   ├── layout.tsx                # Root layout
-│   ├── page.tsx                  # Home/Editor page
-│   ├── gallery/
-│   │   └── page.tsx              # Gallery page
-│   ├── api/                      # API routes (Phase 2)
+├── src/                          # Source directory
+│   ├── app/                      # Next.js App Router
+│   │   ├── layout.tsx            # Root layout
+│   │   ├── page.tsx              # Home/Editor page
+│   │   ├── globals.css           # Global styles
+│   │   ├── favicon.ico           # Favicon
 │   │   ├── gallery/
-│   │   │   ├── route.ts
-│   │   │   └── [id]/
-│   │   │       └── route.ts
-│   │   └── images/
-│   │       └── [id]/
-│   │           └── route.ts
-│   └── globals.css               # Global styles
-│
-├── components/                   # React components
-│   ├── editor/
-│   │   ├── TextInput.tsx
-│   │   ├── TemplateSelector.tsx
-│   │   ├── ColorPicker.tsx
-│   │   ├── FontSizeSelector.tsx
-│   │   ├── PositionSelector.tsx
-│   │   └── EditorPanel.tsx
-│   ├── preview/
-│   │   ├── PreviewCanvas.tsx
-│   │   └── ActionButtons.tsx
-│   ├── gallery/
-│   │   ├── GalleryGrid.tsx
-│   │   ├── GalleryItem.tsx
-│   │   └── GalleryFilter.tsx
-│   ├── common/
-│   │   ├── Header.tsx
-│   │   ├── Footer.tsx
-│   │   ├── Button.tsx
-│   │   ├── Toast.tsx
-│   │   └── Loading.tsx
-│   └── layout/
-│       └── Container.tsx
-│
-├── lib/                          # Core library code
-│   ├── canvas/
-│   │   ├── generator.ts          # Main image generation
-│   │   ├── background.ts         # Background drawing
-│   │   └── text.ts               # Text rendering
-│   ├── storage/
-│   │   ├── localStorage.ts       # Browser storage
-│   │   └── kv.ts                 # Vercel KV (Phase 2)
-│   ├── api/
-│   │   ├── client.ts             # API client
-│   │   └── types.ts              # API types
-│   ├── utils/
-│   │   ├── url.ts                # URL encoding/decoding
-│   │   ├── validation.ts         # Input validation
-│   │   ├── download.ts           # Download utilities
-│   │   └── clipboard.ts          # Clipboard utilities
-│   └── hooks/
-│       ├── useCanvas.ts          # Canvas hook
-│       ├── useConfig.ts          # Config management
-│       └── useGallery.ts         # Gallery data
-│
-├── store/                        # Zustand stores
-│   ├── editorStore.ts
-│   ├── galleryStore.ts
-│   └── uiStore.ts
-│
-├── types/                        # TypeScript types
-│   ├── config.ts
-│   ├── template.ts
-│   ├── gallery.ts
-│   └── api.ts
-│
-├── constants/                    # Constants & config
-│   ├── templates.ts              # Template definitions
-│   ├── colors.ts                 # Color presets
-│   └── defaults.ts               # Default values
+│   │   │   └── page.tsx          # Gallery page
+│   │   └── api/                  # API routes (Phase 2)
+│   │       ├── gallery/
+│   │       │   ├── route.ts
+│   │       │   └── [id]/
+│   │       │       └── route.ts
+│   │       └── images/
+│   │           └── [id]/
+│   │               └── route.ts
+│   │
+│   ├── components/               # React components
+│   │   ├── editor/
+│   │   │   ├── TextInput.tsx
+│   │   │   ├── TemplateSelector.tsx
+│   │   │   ├── ColorPicker.tsx
+│   │   │   ├── FontSizeSelector.tsx
+│   │   │   ├── PositionSelector.tsx
+│   │   │   └── EditorPanel.tsx
+│   │   ├── preview/
+│   │   │   ├── PreviewCanvas.tsx
+│   │   │   └── ActionButtons.tsx
+│   │   ├── gallery/
+│   │   │   ├── GalleryGrid.tsx
+│   │   │   ├── GalleryItem.tsx
+│   │   │   └── GalleryFilter.tsx
+│   │   ├── common/
+│   │   │   ├── Header.tsx
+│   │   │   ├── Footer.tsx
+│   │   │   ├── Button.tsx
+│   │   │   ├── Toast.tsx
+│   │   │   └── Loading.tsx
+│   │   └── layout/
+│   │       └── Container.tsx
+│   │
+│   ├── lib/                      # Core library code
+│   │   ├── canvas/
+│   │   │   ├── generator.ts      # Main image generation
+│   │   │   ├── background.ts     # Background drawing
+│   │   │   └── text.ts           # Text rendering
+│   │   ├── storage/
+│   │   │   ├── localStorage.ts   # Browser storage
+│   │   │   └── kv.ts             # Vercel KV (Phase 2)
+│   │   ├── api/
+│   │   │   ├── client.ts         # API client
+│   │   │   └── types.ts          # API types
+│   │   ├── utils/
+│   │   │   ├── url.ts            # URL encoding/decoding
+│   │   │   ├── validation.ts     # Input validation
+│   │   │   ├── download.ts       # Download utilities
+│   │   │   └── clipboard.ts      # Clipboard utilities
+│   │   └── hooks/
+│   │       ├── useCanvas.ts      # Canvas hook
+│   │       ├── useConfig.ts      # Config management
+│   │       └── useGallery.ts     # Gallery data
+│   │
+│   ├── store/                    # Zustand stores
+│   │   ├── editorStore.ts
+│   │   ├── galleryStore.ts
+│   │   └── uiStore.ts
+│   │
+│   ├── types/                    # TypeScript types
+│   │   ├── config.ts
+│   │   ├── template.ts
+│   │   ├── gallery.ts
+│   │   └── api.ts
+│   │
+│   └── constants/                # Constants & config
+│       ├── templates.ts          # Template definitions
+│       ├── colors.ts             # Color presets
+│       └── defaults.ts           # Default values
 │
 ├── public/                       # Static assets
-│   ├── templates/                # Template thumbnails
-│   └── icons/                    # Icons (if needed)
+│   ├── templates/                # Template thumbnails (to be added)
+│   ├── file.svg                  # Default Next.js assets
+│   ├── globe.svg
+│   ├── next.svg
+│   ├── vercel.svg
+│   └── window.svg
 │
 ├── docs/                         # Documentation
 │   ├── 01_requirements.md
@@ -178,23 +184,32 @@ lgtm-generator/
 │   ├── 05_architecture.md
 │   └── README.md
 │
-├── tests/                        # Tests (optional)
+├── tests/                        # Tests (optional, to be added)
 │   ├── unit/
 │   ├── integration/
 │   └── e2e/
 │
-├── .github/                      # GitHub config
+├── .github/                      # GitHub config (to be added)
 │   └── workflows/
 │       └── deploy.yml
 │
+├── .history/                     # VSCode local history
+├── node_modules/                 # Dependencies
+├── .gitignore
+├── eslint.config.mjs             # ESLint config (new flat config)
+├── next.config.ts                # Next.js config
+├── next-env.d.ts                 # Next.js TypeScript declarations
 ├── package.json
-├── tsconfig.json
-├── tailwind.config.ts
-├── next.config.js
-├── .eslintrc.js
-├── .prettierrc
+├── pnpm-lock.yaml                # pnpm lockfile
+├── postcss.config.mjs            # PostCSS config (for Tailwind)
+├── tsconfig.json                 # TypeScript config
 └── README.md
 ```
+
+**Note:**
+- Next.js 15では`src/`ディレクトリが推奨パターン
+- Path alias `@/*` は `./src/*` に設定済み（tsconfig.json）
+- Tailwind CSS 4はPostCSS統合を使用
 
 ### 2.2 Component Architecture
 
@@ -255,9 +270,11 @@ App
 #### 2.3.1 EditorStore
 
 ```typescript
-// store/editorStore.ts
+// src/store/editorStore.ts
 import { create } from 'zustand';
 import { persist } from 'zustand/middleware';
+import type { LGTMConfig } from '@/types/config';
+import { DEFAULT_CONFIG } from '@/constants/defaults';
 
 interface EditorStore {
   // State
@@ -354,7 +371,9 @@ export const useEditorStore = create<EditorStore>()(
 #### 2.3.2 UIStore
 
 ```typescript
-// store/uiStore.ts
+// src/store/uiStore.ts
+import { create } from 'zustand';
+import type { Toast } from '@/types/ui';
 interface UIStore {
   // Toast notifications
   toasts: Toast[];
@@ -391,7 +410,11 @@ export const useUIStore = create<UIStore>((set) => ({
 #### 2.4.1 useCanvas
 
 ```typescript
-// lib/hooks/useCanvas.ts
+// src/lib/hooks/useCanvas.ts
+import { useEffect, useRef, useState } from 'react';
+import type { LGTMConfig } from '@/types/config';
+import { generateLGTMImage } from '@/lib/canvas/generator';
+
 export function useCanvas(config: LGTMConfig) {
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const [imageData, setImageData] = useState<{
@@ -430,7 +453,13 @@ export function useCanvas(config: LGTMConfig) {
 #### 2.4.2 useConfig
 
 ```typescript
-// lib/hooks/useConfig.ts
+// src/lib/hooks/useConfig.ts
+import { useEffect, useCallback } from 'react';
+import { useEditorStore } from '@/store/editorStore';
+import type { LGTMConfig, TemplateType, FontSize, TextPosition } from '@/types/config';
+import { TEMPLATES } from '@/constants/templates';
+import { decodeConfigFromURL } from '@/lib/utils/url';
+
 export function useConfig() {
   const { config, updateConfig, resetConfig } = useEditorStore();
 
@@ -781,11 +810,12 @@ const items = await Promise.all(
 
 ### 5.3 Bundle Size Optimization
 
-**next.config.js:**
+**next.config.ts:**
 
-```javascript
-/** @type {import('next').NextConfig} */
-const nextConfig = {
+```typescript
+import type { NextConfig } from 'next';
+
+const nextConfig: NextConfig = {
   experimental: {
     optimizePackageImports: ['lucide-react'],
   },
@@ -803,7 +833,7 @@ const nextConfig = {
   },
 };
 
-module.exports = nextConfig;
+export default nextConfig;
 ```
 
 ## 6. Security Architecture

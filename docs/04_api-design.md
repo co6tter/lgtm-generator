@@ -568,9 +568,10 @@ interface PaginationInfo {
 **Implementation (Next.js API Route):**
 
 ```typescript
-// app/api/gallery/route.ts
+// src/app/api/gallery/route.ts
 import { NextRequest, NextResponse } from 'next/server';
 import { kv } from '@vercel/kv';
+import type { GalleryItem } from '@/types/gallery';
 
 export async function GET(request: NextRequest) {
   try {
@@ -673,7 +674,10 @@ interface CreateGalleryResponse {
 **Implementation:**
 
 ```typescript
-// app/api/gallery/route.ts
+// src/app/api/gallery/route.ts
+import { validateLGTMConfig } from '@/lib/utils/validation';
+import type { CreateGalleryRequest } from '@/types/api';
+
 export async function POST(request: NextRequest) {
   try {
     const body: CreateGalleryRequest = await request.json();
@@ -768,7 +772,11 @@ GET /api/gallery/[id]
 **Implementation:**
 
 ```typescript
-// app/api/gallery/[id]/route.ts
+// src/app/api/gallery/[id]/route.ts
+import { NextRequest, NextResponse } from 'next/server';
+import { kv } from '@vercel/kv';
+import type { GalleryItem } from '@/types/gallery';
+
 export async function GET(
   request: NextRequest,
   { params }: { params: { id: string } }
@@ -824,8 +832,12 @@ GET /api/images/[id]
 **Implementation (using @vercel/og or canvas):**
 
 ```typescript
-// app/api/images/[id]/route.ts
+// src/app/api/images/[id]/route.ts
+import { NextRequest } from 'next/server';
 import { ImageResponse } from '@vercel/og';
+import { kv } from '@vercel/kv';
+import type { GalleryItem } from '@/types/gallery';
+import { TEMPLATES, FONT_SIZE_MAP } from '@/constants/templates';
 
 export async function GET(
   request: NextRequest,
@@ -898,7 +910,10 @@ POST /api/stats/[id]/download
 **Implementation:**
 
 ```typescript
-// app/api/stats/[id]/download/route.ts
+// src/app/api/stats/[id]/download/route.ts
+import { NextRequest, NextResponse } from 'next/server';
+import { kv } from '@vercel/kv';
+
 export async function POST(
   request: NextRequest,
   { params }: { params: { id: string } }

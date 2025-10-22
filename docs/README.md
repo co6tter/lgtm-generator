@@ -166,16 +166,38 @@ API設計仕様書
 
 | Category | Technology | Purpose |
 |----------|-----------|---------|
-| **Framework** | Next.js 14+ (App Router) | React フレームワーク |
+| **Framework** | Next.js 15.5.6 (App Router) | React フレームワーク |
 | **Language** | TypeScript 5+ | 型安全な開発 |
-| **UI** | React 18+ | UIライブラリ |
-| **Styling** | Tailwind CSS 3+ | ユーティリティファーストCSS |
-| **State** | Zustand | 軽量な状態管理 |
+| **UI** | React 19.1.0 | UIライブラリ |
+| **Styling** | Tailwind CSS 4+ (PostCSS) | ユーティリティファーストCSS |
+| **State** | Zustand (to be added) | 軽量な状態管理 |
 | **Image Gen** | Canvas API | クライアントサイド画像生成 |
-| **Icons** | Heroicons / Lucide React | アイコンライブラリ |
+| **Icons** | Heroicons / Lucide React (to be added) | アイコンライブラリ |
 | **Hosting** | Vercel | デプロイメントプラットフォーム |
 | **Database** | Vercel KV (Phase 2) | Redis互換KVストア |
 | **Package Manager** | pnpm | 高速なパッケージマネージャー |
+
+**Current Dependencies:**
+```json
+{
+  "dependencies": {
+    "react": "19.1.0",
+    "react-dom": "19.1.0",
+    "next": "15.5.6"
+  },
+  "devDependencies": {
+    "typescript": "^5",
+    "@types/node": "^20",
+    "@types/react": "^19",
+    "@types/react-dom": "^19",
+    "@tailwindcss/postcss": "^4",
+    "tailwindcss": "^4",
+    "eslint": "^9",
+    "eslint-config-next": "15.5.6",
+    "@eslint/eslintrc": "^3"
+  }
+}
+```
 
 ---
 
@@ -264,15 +286,19 @@ pnpm dev
 # Run linter
 pnpm lint
 
-# Type check
-pnpm type-check
+# Type check (using tsc)
+pnpm exec tsc --noEmit
 
-# Format code
-pnpm format
+# Format code (to be added: prettier)
+# pnpm format
 
 # Run tests (when implemented)
-pnpm test
+# pnpm test
 ```
+
+**Note:**
+- `pnpm dev` uses Turbopack for faster development
+- Prettier is not yet configured (to be added)
 
 ### 3. Build & Deploy
 
