@@ -1,0 +1,26 @@
+# Dependencies
+node_modules
+pnpm-lock.yaml
+
+# Build output
+.next
+out
+dist
+
+# Cache
+.turbo
+
+# History
+.history
+
+# Environment
+.env
+.env.local
+.env*.local
+
+# Docs (optional - remove if you want to format docs)
+# docs
+
+# Config files that should not be formatted
+package-lock.json
+yarn.lock
