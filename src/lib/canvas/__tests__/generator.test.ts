@@ -3,9 +3,9 @@
  * Manual verification tests for image generation
  */
 
-import { generateLGTMImage } from '../generator';
-import { DEFAULT_CONFIG } from '@/constants';
-import type { LGTMConfig } from '@/types';
+import { generateLGTMImage } from "../generator";
+import { DEFAULT_CONFIG } from "@/constants";
+import type { LGTMConfig } from "@/types";
 
 /**
  * Test configurations for different scenarios
@@ -17,51 +17,51 @@ export const TEST_CONFIGS: LGTMConfig[] = [
   // Classic template with custom text
   {
     ...DEFAULT_CONFIG,
-    text: 'Looks Good!',
-    template: 'classic',
+    text: "Looks Good!",
+    template: "classic",
   },
 
   // Dark template
   {
     ...DEFAULT_CONFIG,
-    text: 'APPROVED ✓',
-    template: 'dark',
+    text: "APPROVED ✓",
+    template: "dark",
   },
 
   // Minimal template
   {
     ...DEFAULT_CONFIG,
-    text: 'Ship it! 🚀',
-    template: 'minimal',
+    text: "Ship it! 🚀",
+    template: "minimal",
   },
 
   // Vibrant template with multi-line
   {
     ...DEFAULT_CONFIG,
-    text: 'Great Work!\nLGTM',
-    template: 'vibrant',
+    text: "Great Work!\nLGTM",
+    template: "vibrant",
   },
 
   // Retro template with position
   {
     ...DEFAULT_CONFIG,
-    text: 'LGTM',
-    template: 'retro',
-    textPosition: 'bottom',
+    text: "LGTM",
+    template: "retro",
+    textPosition: "bottom",
   },
 
   // Large font size
   {
     ...DEFAULT_CONFIG,
-    text: 'LGTM',
-    fontSize: 'large',
+    text: "LGTM",
+    fontSize: "large",
   },
 
   // Small font size
   {
     ...DEFAULT_CONFIG,
-    text: 'Looks Good To Me',
-    fontSize: 'small',
+    text: "Looks Good To Me",
+    fontSize: "small",
   },
 ];
 
@@ -70,7 +70,7 @@ export const TEST_CONFIGS: LGTMConfig[] = [
  * This is a manual test - run in browser console
  */
 export async function testImageGeneration() {
-  console.log('🧪 Testing Canvas Image Generation...\n');
+  console.log("🧪 Testing Canvas Image Generation...\n");
 
   for (let i = 0; i < TEST_CONFIGS.length; i++) {
     const config = TEST_CONFIGS[i];
@@ -89,7 +89,7 @@ export async function testImageGeneration() {
     }
   }
 
-  console.log('\n✅ All tests completed!');
+  console.log("\n✅ All tests completed!");
 }
 
 // Note: This test file is for development/manual testing only
