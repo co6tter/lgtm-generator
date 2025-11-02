@@ -81,6 +81,25 @@ export function getLastConfig(): LGTMConfig | null {
 }
 
 /**
+ * Delete a specific configuration by ID
+ */
+export function deleteConfig(id: string): StorageResult {
+  try {
+    const recent = getRecentConfigs();
+    const filtered = recent.filter((config) => config.id !== id);
+    localStorage.setItem(STORAGE_KEYS.RECENT_CONFIGS, JSON.stringify(filtered));
+
+    return { success: true };
+  } catch (error) {
+    console.error("Failed to delete config:", error);
+    return {
+      success: false,
+      error: error instanceof Error ? error.message : "Failed to delete configuration",
+    };
+  }
+}
+
+/**
  * Clear all recent configurations
  */
 export function clearRecentConfigs(): StorageResult {
@@ -97,6 +116,11 @@ export function clearRecentConfigs(): StorageResult {
     };
   }
 }
+
+/**
+ * Alias for clearRecentConfigs for backward compatibility
+ */
+export const clearAllConfigs = clearRecentConfigs;
 
 /**
  * Save user preferences
