@@ -80,9 +80,9 @@
 **Development Tools:**
 - **Package Manager**: pnpm
 - **Linter**: ESLint 9
-- **Formatter**: Prettier (to be added)
+- **Formatter**: Prettier
 - **Type Checking**: TypeScript
-- **Testing**: Vitest + React Testing Library (optional, to be added)
+- **Testing**: Vitest 4 + React Testing Library 16
 
 ## 2. Frontend Architecture
 
@@ -954,11 +954,11 @@ const logger = {
 ```json
 {
   "devDependencies": {
-    "vitest": "^1.0.0",
-    "@testing-library/react": "^14.0.0",
-    "@testing-library/jest-dom": "^6.0.0",
-    "@testing-library/user-event": "^14.0.0",
-    "playwright": "^1.40.0"
+    "vitest": "^4.0.7",
+    "@testing-library/react": "^16.3.0",
+    "@testing-library/jest-dom": "^6.9.1",
+    "@vitejs/plugin-react": "^5.1.0",
+    "jsdom": "^27.1.0"
   }
 }
 ```

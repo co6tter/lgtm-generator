@@ -92,6 +92,9 @@ lgtm-generator/
 | `pnpm build` | 本番ビルド（Turbopack使用） |
 | `pnpm start` | 本番サーバー起動 |
 | `pnpm lint` | ESLintによるコードチェック |
+| `pnpm test` | テスト実行（Vitest） |
+| `pnpm test:ui` | テストUIで実行 |
+| `pnpm test:coverage` | カバレッジレポート生成 |
 
 ## Documentation
 
