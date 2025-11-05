@@ -18,27 +18,27 @@ describe('validation utils', () => {
     });
 
     it('should accept valid templates', () => {
-      const templates = ['classic', 'dark', 'minimal', 'vibrant', 'retro'];
+      const templates: Array<'classic' | 'dark' | 'minimal' | 'vibrant' | 'retro'> = ['classic', 'dark', 'minimal', 'vibrant', 'retro'];
       templates.forEach((template) => {
-        const config = { ...DEFAULT_CONFIG, template: template as any };
+        const config = { ...DEFAULT_CONFIG, template };
         const result = validateLGTMConfig(config);
         expect(result.isValid).toBe(true);
       });
     });
 
     it('should accept valid font sizes', () => {
-      const sizes = ['small', 'medium', 'large'];
+      const sizes: Array<'small' | 'medium' | 'large'> = ['small', 'medium', 'large'];
       sizes.forEach((size) => {
-        const config = { ...DEFAULT_CONFIG, fontSize: size as any };
+        const config = { ...DEFAULT_CONFIG, fontSize: size };
         const result = validateLGTMConfig(config);
         expect(result.isValid).toBe(true);
       });
     });
 
     it('should accept valid text positions', () => {
-      const positions = ['top', 'center', 'bottom'];
+      const positions: Array<'top' | 'center' | 'bottom'> = ['top', 'center', 'bottom'];
       positions.forEach((position) => {
-        const config = { ...DEFAULT_CONFIG, textPosition: position as any };
+        const config = { ...DEFAULT_CONFIG, textPosition: position };
         const result = validateLGTMConfig(config);
         expect(result.isValid).toBe(true);
       });
