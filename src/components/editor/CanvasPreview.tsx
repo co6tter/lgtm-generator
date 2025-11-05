@@ -52,6 +52,7 @@ export function CanvasPreview({
         )}
 
         {!isGenerating && !error && imageData && (
+          // eslint-disable-next-line @next/next/no-img-element
           <img
             src={imageData.dataUrl}
             alt="LGTM preview"

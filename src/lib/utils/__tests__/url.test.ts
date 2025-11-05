@@ -47,21 +47,21 @@ describe('URL encoding/decoding', () => {
   describe('decodeConfigFromURL', () => {
     beforeEach(() => {
       // Reset location mock
-      delete (window as any).location;
-      (window as any).location = {
+      delete (window as unknown as { location: unknown }).location;
+      (window as unknown as { location: { href: string; search: string } }).location = {
         href: 'http://localhost:3000',
         search: ''
       };
     });
 
     it('should return null when no parameters', () => {
-      (window as any).location.href = 'http://localhost:3000';
+      (window as unknown as { location: { href: string } }).location.href = 'http://localhost:3000';
       const config = decodeConfigFromURL();
       expect(config).toBeNull();
     });
 
     it('should decode basic parameters', () => {
-      (window as any).location.href = 'http://localhost:3000?text=Test&tpl=dark&size=medium&tc=FFFFFF&bg=000000&pos=center';
+      (window as unknown as { location: { href: string } }).location.href = 'http://localhost:3000?text=Test&tpl=dark&size=medium&tc=FFFFFF&bg=000000&pos=center';
       const config = decodeConfigFromURL();
       expect(config).toBeDefined();
       expect(config?.text).toBe('Test');
@@ -69,14 +69,14 @@ describe('URL encoding/decoding', () => {
     });
 
     it('should add # to colors', () => {
-      (window as any).location.href = 'http://localhost:3000?text=LGTM&tpl=classic&size=medium&tc=FF0000&bg=00FF00&pos=center';
+      (window as unknown as { location: { href: string } }).location.href = 'http://localhost:3000?text=LGTM&tpl=classic&size=medium&tc=FF0000&bg=00FF00&pos=center';
       const config = decodeConfigFromURL();
       expect(config?.textColor).toBe('#FF0000');
       expect(config?.backgroundColor).toBe('#00FF00');
     });
 
     it('should decode URL-encoded text', () => {
-      (window as any).location.href = 'http://localhost:3000?text=Hello+World&tpl=classic&size=medium&tc=FFFFFF&bg=000000&pos=center';
+      (window as unknown as { location: { href: string } }).location.href = 'http://localhost:3000?text=Hello+World&tpl=classic&size=medium&tc=FFFFFF&bg=000000&pos=center';
       const config = decodeConfigFromURL();
       expect(config?.text).toBe('Hello World');
     });
