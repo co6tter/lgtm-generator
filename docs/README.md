@@ -270,8 +270,8 @@ API設計仕様書
 
 ```bash
 # Clone repository
-git clone https://github.com/co6tter/lgtm-generator.git
-cd lgtm-generator
+git clone https://github.com/co6tter/lgtm-generator-v1.git
+cd lgtm-generator-v1
 
 # Install dependencies
 pnpm install
@@ -470,7 +470,7 @@ git push origin main
 
 ### Issue Reporting
 
-バグや改善提案は[GitHub Issues](https://github.com/co6tter/lgtm-generator/issues)へ
+バグや改善提案は[GitHub Issues](https://github.com/co6tter/lgtm-generator-v1/issues)へ
 
 ---
 
@@ -500,8 +500,8 @@ TBD (MITを推奨)
 
 ## Contact
 
-- **Repository**: https://github.com/co6tter/lgtm-generator
-- **Issues**: https://github.com/co6tter/lgtm-generator/issues
+- **Repository**: https://github.com/co6tter/lgtm-generator-v1
+- **Issues**: https://github.com/co6tter/lgtm-generator-v1/issues
 
 ---
 

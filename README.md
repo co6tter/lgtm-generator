@@ -1,4 +1,4 @@
-# LGTM Generator
+# LGTM Generator-v1
 
 [![Next.js](https://img.shields.io/badge/Next.js-15.5.6-black)](https://nextjs.org/)
 [![React](https://img.shields.io/badge/React-19.1.0-blue)](https://react.dev/)
@@ -44,8 +44,8 @@ LGTM Generatorは、プルリクエストやコードレビューで使用でき
 
 ```bash
 # Clone repository
-git clone https://github.com/co6tter/lgtm-generator.git
-cd lgtm-generator
+git clone https://github.com/co6tter/lgtm-generator-1.git
+cd lgtm-generator-v1
 
 # Install dependencies
 pnpm install
@@ -73,7 +73,7 @@ pnpm start
 ## Project Structure
 
 ```
-lgtm-generator/
+lgtm-generator-v1/
 ├── src/
 │   ├── app/              # Next.js App Router
 │   ├── components/       # React components (to be added)

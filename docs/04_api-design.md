@@ -448,7 +448,7 @@ function clearRecentConfigs(): StorageResult {
 function encodeConfigToURL(config: LGTMConfig): string {
   const baseUrl = typeof window !== 'undefined'
     ? window.location.origin
-    : 'https://lgtm-generator.vercel.app';
+    : 'https://lgtm-generator-v1.vercel.app';
 
   const params = new URLSearchParams();
 
@@ -656,7 +656,7 @@ interface CreateGalleryRequest {
   "data": {
     "id": "uuid",
     "url": "/api/gallery/uuid",
-    "shareUrl": "https://lgtm-generator.vercel.app/gallery/uuid"
+    "shareUrl": "https://lgtm-generator-v1.vercel.app/gallery/uuid"
   }
 }
 
