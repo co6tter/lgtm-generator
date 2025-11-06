@@ -89,7 +89,7 @@
 ### 2.1 Directory Structure
 
 ```
-lgtm-generator/
+lgtm-generator-v1/
 ├── src/                          # Source directory
 │   ├── app/                      # Next.js App Router
 │   │   ├── layout.tsx            # Root layout
@@ -736,7 +736,7 @@ NEXT_PUBLIC_BASE_URL=http://localhost:3000
 NODE_ENV=development
 
 # Vercel (production)
-NEXT_PUBLIC_BASE_URL=https://lgtm-generator.vercel.app
+NEXT_PUBLIC_BASE_URL=https://lgtm-generator-v1.vercel.app
 KV_URL=https://xxx.upstash.io  # Auto-configured by Vercel
 KV_REST_API_TOKEN=xxx          # Auto-configured by Vercel
 NODE_ENV=production
@@ -851,7 +851,7 @@ const validatedConfig = validateLGTMConfig(config);
 ```typescript
 // Restrict API access
 const allowedOrigins = [
-  'https://lgtm-generator.vercel.app',
+  'https://lgtm-generator-v1.vercel.app',
   process.env.NODE_ENV === 'development' && 'http://localhost:3000',
 ].filter(Boolean);
 ```

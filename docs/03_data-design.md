@@ -265,13 +265,13 @@ const getRecentConfigs = (): LGTMConfig[] => {
 **URL Format:**
 
 ```
-https://lgtm-generator.vercel.app/?config={base64_encoded_json}
+https://lgtm-generator-v1.vercel.app/?config={base64_encoded_json}
 ```
 
 **Or expanded format:**
 
 ```
-https://lgtm-generator.vercel.app/?
+https://lgtm-generator-v1.vercel.app/?
   text=LGTM&
   template=classic&
   fontSize=medium&
